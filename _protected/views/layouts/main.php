@@ -37,6 +37,18 @@ AppAsset::register($this);
     // everyone can see Home page
     $menuItems[] = ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']];
 
+    if(!Yii::$app->user->isGuest){
+        $menuItems[] = ['label' => 'Parameter', 'items' => [
+            ['label' => "Data Umum", 'url' => ['/parameter/pemda']],
+            ['label' => "Bobot Sub Unsur", 'url' => ['/parameter/bobot']],
+        ]];
+        $menuItems[] = ['label' => 'Tindakan', 'items' => [
+            ['label' => "Rencan Tindak", 'url' => ['/parameter/pemda']],
+            ['label' => "Tindak Lanjut", 'url' => ['/parameter/bobot']],
+            ['label' => "Analisis TL", 'url' => ['/parameter/bobot']],
+        ]];
+    }
+
     // we do not need to display About and Contact pages to employee+ roles
     if (!Yii::$app->user->can('employee')) {
         $menuItems[] = ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']];

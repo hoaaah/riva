@@ -30,7 +30,7 @@ class TaTh extends \yii\db\ActiveRecord
         return [
             [['tahun'], 'required'],
             [['tahun'], 'safe'],
-            [['nama_pemda'], 'string', 'max' => 25],
+            [['nama_pemda'], 'string', 'max' => 50],
             [['image_name', 'saved_image'], 'string', 'max' => 255],
             [['tahun'], 'unique'],
         ];
