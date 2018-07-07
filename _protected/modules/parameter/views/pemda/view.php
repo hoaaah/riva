@@ -14,6 +14,7 @@ use yii\widgets\DetailView;
             'nama_pemda',
             'image_name',
             'saved_image',
+            'imageUrl:image'
         ],
     ]) ?>
 

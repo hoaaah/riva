@@ -16,7 +16,8 @@
         "yiisoft/yii2-swiftmailer": "*",
         "kartik-v/yii2-password": "@dev",
         "johnitvn/yii2-ajaxcrud": "^2.1",
-        "kartik-v/yii2-widgets": "^3.4"
+        "kartik-v/yii2-widgets": "^3.4",
+        "bilginnet/yii2-cropper": "dev-master"
     },
     "require-dev": {
         "codeception/codeception": "*",

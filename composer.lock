@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec85e9c751aa7fcb2f41bdd5742b9ed1",
+    "content-hash": "d5f3aba9207b6335023d7e451f25e8a1",
     "packages": [
+        {
+            "name": "bilginnet/yii2-cropper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bilginnet/yii2-cropper.git",
+                "reference": "0e472d1c16b3421d1a252991799126622d6bffe0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bilginnet/yii2-cropper/zipball/0e472d1c16b3421d1a252991799126622d6bffe0",
+                "reference": "0e472d1c16b3421d1a252991799126622d6bffe0",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bilginnet\\cropper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ercan Bilgin",
+                    "email": "bilginnet@gmail.com",
+                    "homepage": "https://github.com/bilginnet?tab=repositories"
+                }
+            ],
+            "description": "Yii2 Bootstrap Cropper Input Widget",
+            "keywords": [
+                "cropper",
+                "extension",
+                "widget",
+                "yii2"
+            ],
+            "time": "2018-06-29T21:06:24+00:00"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.7",
@@ -5549,7 +5593,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kartik-v/yii2-password": 20
+        "kartik-v/yii2-password": 20,
+        "bilginnet/yii2-cropper": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

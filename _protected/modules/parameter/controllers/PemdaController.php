@@ -99,15 +99,26 @@ class PemdaController extends Controller
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
-                return [
-                    'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new TaTh",
-                    'content'=>'<span class="text-success">Create TaTh success</span>',
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
-        
-                ];         
+            }else if($model->load($request->post())){
+                $image = $model->uploadImage();
+
+                if($model->save())
+                {
+                    // upload only if valid uploaded file instance found
+                    if ($image !== false) {
+                        $path = $model->getImage();
+                        $image->saveAs($path);
+                    }
+                        
+                    return [
+                        'forceReload'=>'#crud-datatable-pjax',
+                        'title'=> "Create new TaTh",
+                        'content'=>'<span class="text-success">Create TaTh success</span>',
+                        'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
+            
+                    ];  
+                }       
             }else{           
                 return [
                     'title'=> "Create new TaTh",
@@ -123,8 +134,19 @@ class PemdaController extends Controller
             /*
             *   Process for non-ajax request
             */
-            if ($model->load($request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->tahun]);
+            if ($model->load($request->post())) {
+
+                $image = $model->uploadImage();
+
+                if($model->save())
+                {
+                    // upload only if valid uploaded file instance found
+                    if ($image !== false) {
+                        $path = $model->getImage();
+                        $image->saveAs($path);
+                    }
+                    return $this->redirect(['view', 'id' => $model->tahun]);
+                }
             } else {
                 return $this->render('create', [
                     'model' => $model,
@@ -160,16 +182,27 @@ class PemdaController extends Controller
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
-                return [
-                    'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "TaTh #".$id,
-                    'content'=>$this->renderAjax('view', [
-                        'model' => $model,
-                    ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
-                ];    
+            }else if($model->load($request->post())){
+                $image = $model->uploadImage();
+
+                if($model->save())
+                {
+                    // upload only if valid uploaded file instance found
+                    if ($image !== false) {
+                        $path = $model->getImage();
+                        $image->saveAs($path);
+                    }
+
+                    return [
+                        'forceReload'=>'#crud-datatable-pjax',
+                        'title'=> "TaTh #".$id,
+                        'content'=>$this->renderAjax('view', [
+                            'model' => $model,
+                        ]),
+                        'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
+                    ];
+                }    
             }else{
                  return [
                     'title'=> "Update TaTh #".$id,
@@ -184,8 +217,19 @@ class PemdaController extends Controller
             /*
             *   Process for non-ajax request
             */
-            if ($model->load($request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->tahun]);
+            if ($model->load($request->post())) {
+
+                $image = $model->uploadImage();
+
+                if($model->save())
+                {
+                    // upload only if valid uploaded file instance found
+                    if ($image !== false) {
+                        $path = $model->getImage();
+                        $image->saveAs($path);
+                    }
+                    return $this->redirect(['view', 'id' => $model->tahun]);
+                }
             } else {
                 return $this->render('update', [
                     'model' => $model,
@@ -204,6 +248,10 @@ class PemdaController extends Controller
     public function actionDelete($id)
     {
         $request = Yii::$app->request;
+
+        $model = TaTh::findOne($id);
+        $model->deleteImage();
+        
         $this->findModel($id)->delete();
 
         if($request->isAjax){
@@ -222,6 +270,15 @@ class PemdaController extends Controller
 
     }
 
+    public function actionDeleteImage($id)
+    {
+        $model = TaTh::findOne($id);
+        if(!$model->deleteImage()){
+            return false;
+        }
+        return true;
+    }
+
      /**
      * Delete multiple existing TaTh model.
      * For ajax request will return json object
@@ -235,6 +292,7 @@ class PemdaController extends Controller
         $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys
         foreach ( $pks as $pk ) {
             $model = $this->findModel($pk);
+            $model->deleteImage();
             $model->delete();
         }
 

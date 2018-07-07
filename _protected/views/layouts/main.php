@@ -43,9 +43,9 @@ AppAsset::register($this);
             ['label' => "Bobot Sub Unsur", 'url' => ['/parameter/bobot']],
         ]];
         $menuItems[] = ['label' => 'Tindakan', 'items' => [
-            ['label' => "Rencan Tindak", 'url' => ['/parameter/pemda']],
-            ['label' => "Tindak Lanjut", 'url' => ['/parameter/bobot']],
-            ['label' => "Analisis TL", 'url' => ['/parameter/bobot']],
+            ['label' => "Rencan Tindak", 'url' => ['/tindak/rencana']],
+            ['label' => "Tindak Lanjut", 'url' => ['/tindak/tl']],
+            ['label' => "Analisis TL", 'url' => ['/tindak/analisis']],
         ]];
     }
 

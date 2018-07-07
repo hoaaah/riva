@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\widgets\FileInput;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\TaTh */
@@ -15,9 +17,31 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nama_pemda')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'image_name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'saved_image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image')->widget(FileInput::classname(), [
+        'options'=>['accept'=>'image/*'],
+        'pluginOptions'=>[
+            'maxFileCount' => 1,
+            'allowedFileExtensions' => ['jpg','gif','png'],
+            'showPreview' => true,
+            'showCaption' => true,
+            'showRemove' => true,
+            'showUpload' => false,
+            // this line for image preview
+            'initialPreview'=>[
+                $model->image_name ? $model->getImageUrl() : null,
+            ],
+            'initialPreviewAsData'=>true,
+            'initialCaption'=> $model->image_name ? $model->image_name : null,
+            'initialPreviewConfig' => [
+                $model->image_name ? [
+                    'caption' => $model->image_name, 
+                    'size' => filesize($model->getImage()), 
+                    'url' => Url::to(['delete-image', 'id' => $model->tahun, 'file' => $model->image_name])
+                ] : null,
+            ],
+            'overwriteInitial'=> false,
+    ]])->label('Logo Image') ?>
+    
 
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
