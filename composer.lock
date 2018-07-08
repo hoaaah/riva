@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5f3aba9207b6335023d7e451f25e8a1",
+    "content-hash": "4d6547c7f072072c1e11ee8fcdb9d059",
     "packages": [
         {
             "name": "bilginnet/yii2-cropper",
@@ -302,6 +302,46 @@
                 "bower-asset-main": "dist/typeahead.bundle.js"
             },
             "time": "2015-04-27T04:02:14+00:00"
+        },
+        {
+            "name": "bower-asset/viewerjs",
+            "version": "v0.5.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kogmbh/ViewerJS_release.git",
+                "reference": "4f6e52aaad44b4c11e5de28e40a488c0a4ccbebf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kogmbh/ViewerJS_release/zipball/4f6e52aaad44b4c11e5de28e40a488c0a4ccbebf",
+                "reference": "4f6e52aaad44b4c11e5de28e40a488c0a4ccbebf",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-ignore": []
+            },
+            "license": [
+                "AGPL-3.0"
+            ],
+            "description": "Document viewer component for PDF and ODF documents. Done with just HTML, CSS, and JavaScript. Powered by pdf.js and WebODF.",
+            "keywords": [
+                "Document",
+                "FODP",
+                "FODT",
+                "ODF",
+                "ODP",
+                "ODT",
+                "OTP",
+                "OTT",
+                "OpenDocument",
+                "PDF",
+                "Presentation",
+                "Slides",
+                "Text",
+                "Viewer"
+            ],
+            "time": "2015-09-03T20:44:58+00:00"
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -2194,6 +2234,51 @@
                 "yii2"
             ],
             "time": "2014-11-09T19:54:17+00:00"
+        },
+        {
+            "name": "lesha724/yii2-document-viewer",
+            "version": "v0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lesha724/yii2-document-viewer.git",
+                "reference": "8d9dd7e708ddf5759a972d27f34e2408f2df970c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lesha724/yii2-document-viewer/zipball/8d9dd7e708ddf5759a972d27f34e2408f2df970c",
+                "reference": "8d9dd7e708ddf5759a972d27f34e2408f2df970c",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/viewerjs": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "lesha724\\documentviewer\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "lesha724",
+                    "email": "neff.alexey@gmail.com"
+                }
+            ],
+            "description": "виджет для отображения online документов с помощью google viewer и microsoft document viewer",
+            "keywords": [
+                "Viewer",
+                "ViewerJS",
+                "docs",
+                "extension",
+                "widget",
+                "yii2"
+            ],
+            "time": "2018-01-13T15:29:38+00:00"
         },
         {
             "name": "mpdf/mpdf",

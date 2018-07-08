@@ -266,8 +266,6 @@ class PemdaController extends Controller
             */
             return $this->redirect(['index']);
         }
-
-
     }
 
     public function actionDeleteImage($id)

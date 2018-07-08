@@ -17,7 +17,8 @@
         "kartik-v/yii2-password": "@dev",
         "johnitvn/yii2-ajaxcrud": "^2.1",
         "kartik-v/yii2-widgets": "^3.4",
-        "bilginnet/yii2-cropper": "dev-master"
+        "bilginnet/yii2-cropper": "dev-master",
+        "lesha724/yii2-document-viewer": "^0.0.4"
     },
     "require-dev": {
         "codeception/codeception": "*",
