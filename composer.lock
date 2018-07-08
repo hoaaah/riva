@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d6547c7f072072c1e11ee8fcdb9d059",
+    "content-hash": "4080ac481cdab21629c504aaa0372565",
     "packages": [
         {
             "name": "bilginnet/yii2-cropper",
@@ -49,6 +49,93 @@
                 "yii2"
             ],
             "time": "2018-06-29T21:06:24+00:00"
+        },
+        {
+            "name": "bizley/migration",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bizley/yii2-migration.git",
+                "reference": "28a7f9ee42e39afb599f8a1f3b3ad83fedd10e78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bizley/yii2-migration/zipball/28a7f9ee42e39afb599f8a1f3b3ad83fedd10e78",
+                "reference": "28a7f9ee42e39afb599f8a1f3b3ad83fedd10e78",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0",
+                "yiisoft/yii2": ">=2.0.15.1 <2.1.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bizley\\migration\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Pawel Bizley Brzozowski",
+                    "email": "pawel@positive.codes"
+                }
+            ],
+            "description": "Migration generator for Yii 2.",
+            "keywords": [
+                "console",
+                "generator",
+                "migrate",
+                "migration",
+                "yii2"
+            ],
+            "time": "2018-07-01T14:26:29+00:00"
+        },
+        {
+            "name": "bizley/quill",
+            "version": "2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bizley/yii2-quill.git",
+                "reference": "ad8e1cb4f2e31b240903dd8fe631f1cc9e7791bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bizley/yii2-quill/zipball/ad8e1cb4f2e31b240903dd8fe631f1cc9e7791bc",
+                "reference": "ad8e1cb4f2e31b240903dd8fe631f1cc9e7791bc",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "^2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bizley\\quill\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Pawel Bizley Brzozowski",
+                    "email": "pawel@positive.codes"
+                }
+            ],
+            "description": "Quill editor implementation for Yii 2.",
+            "keywords": [
+                "editor",
+                "quill",
+                "widget",
+                "wysiwyg",
+                "yii2"
+            ],
+            "time": "2017-02-06T16:37:13+00:00"
         },
         {
             "name": "bower-asset/bootstrap",

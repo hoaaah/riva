@@ -39,7 +39,10 @@ use kartik\widgets\DatePicker;
         }
     ]); ?>
 
-    <?= $form->field($rencanaTindak, 'rencana_tindak')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($rencanaTindak, 'rencana_tindak')->widget(\bizley\quill\Quill::class, [
+        'theme' => 'snow',
+        'toolbarOptions' => 'BASIC'
+    ]) ?>
     
     <?= $form->field($rencanaTindak, 'output')->textInput() ?>
 

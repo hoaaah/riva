@@ -35,7 +35,7 @@ return [
         'value' => function($model){
             return $model->taRencanaTindak['rencana_tindak'];
         },
-        'format' => 'ntext',
+        'format' => 'html',
     ],
     [
         'label' => 'Output',
