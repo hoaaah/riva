@@ -65,6 +65,35 @@ class TaRencanaTindak extends \yii\db\ActiveRecord
         ];
     }
 
+    public function levelSpipArray($previousLevel = null)
+    {
+        $levels = [
+            0 => 'Belum Ada',
+            1 => 'Rintisan',
+            2 => 'Berkembang',
+            3 => 'Terdefinisi',
+            4 => 'Terkelola dan Terukur',
+            5 => 'Optimum'
+        ];
+
+        // jika previous level di set maka munculkan hanya level di atasnya saja
+        if($previousLevel)
+        {
+
+        }
+        return $levels;
+    }
+
+    public function getLevelAwalSpip()
+    {
+        return $this->level_awal." (".$this->levelSpipArray()[$this->level_awal].")";
+    }
+
+    public function getLevelTargetSpip()
+    {
+        return $this->level_target." (".$this->levelSpipArray()[$this->level_target].")";
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */

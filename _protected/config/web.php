@@ -20,6 +20,9 @@ $config = [
         'parameter' => [
             'class' => 'app\modules\parameter\Parameter',
         ],
+        'tindak' => [
+            'class' => 'app\modules\tindak\Module',
+        ],
     ],
     'components' => [
         'request' => [

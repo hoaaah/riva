@@ -93,4 +93,9 @@ class RefSubUnsur extends \yii\db\ActiveRecord
     {
         return $this->hasMany(TaRencanaTindak::className(), ['sub_unsur_id' => 'id']);
     }
+
+    public function getTaRencanaTindak()
+    {
+        return $this->hasOne(TaRencanaTindak::className(), ['sub_unsur_id' => 'id']);
+    }
 }
