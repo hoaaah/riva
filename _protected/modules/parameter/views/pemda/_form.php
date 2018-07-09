@@ -17,7 +17,7 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'nama_pemda')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'image')->widget(FileInput::classname(), [
+    <?php $form->field($model, 'image')->widget(FileInput::classname(), [
         'options'=>['accept'=>'image/*'],
         'pluginOptions'=>[
             'maxFileCount' => 1,
@@ -42,7 +42,12 @@ use yii\helpers\Url;
             'overwriteInitial'=> false,
     ]])->label('Logo Image') ?>
     
-
+    <?php  echo $form->field($model, 'image')->widget(\bilginnet\cropper\Cropper::className(), [
+        'cropperOptions' => [
+            'width' => 100, // must be specified
+            'height' => 100, // must be specified
+        ]
+    ]); ?>
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">
