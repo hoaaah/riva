@@ -24,10 +24,13 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+<?php $taTh = \app\models\TaTh::find()->where('(SELECT MAX(tahun) FROM ta_th)')->one(); ?>
+
 <div class="wrap">
     <?php
+    // echo '<a href="#" class="">'.\yii\helpers\Html::img($taTh->getImageUrl(), ['alt' => 'Brand', 'class' => 'img-rounded', 'height' => '30px']).'</a>';
     NavBar::begin([
-        'brandLabel' => Yii::t('app', Yii::$app->name),
+        'brandLabel' => isset($taTh) ? $taTh->nama_pemda : Yii::t('app', Yii::$app->name),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-default navbar-fixed-top',
