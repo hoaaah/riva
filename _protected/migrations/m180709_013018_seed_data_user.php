@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+use app\models\User;
 
 /**
  * Class m180709_013018_seed_data_user
