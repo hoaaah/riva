@@ -16,8 +16,8 @@ class m180708_153830_create_table_ta_analisis_tl extends Migration
             'tahun' => $this->date()->notNull(),
             'rencana_tindak_id' => $this->integer()->notNull(),
             'level_akhir' => $this->integer()->notNull(),
-            'bobot' => $this->decimal(),
-            'skor' => $this->decimal(),
+            'bobot' => $this->decimal(5,4),
+            'skor' => $this->decimal(8,6),
         ], $tableOptions);
 
         $this->createIndex('rencana_tindak_id', '{{%ta_analisis_tl}}', 'rencana_tindak_id');

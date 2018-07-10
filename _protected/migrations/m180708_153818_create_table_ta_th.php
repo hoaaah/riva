@@ -12,7 +12,7 @@ class m180708_153818_create_table_ta_th extends Migration
         }
 
         $this->createTable('{{%ta_th}}', [
-            'tahun' => $this->date()->notNull()->append('PRIMARY KEY'),
+            'tahun' => $this->integer(4)->notNull()->append('PRIMARY KEY'),
             'nama_pemda' => $this->string(),
             'image_name' => $this->string(),
             'saved_image' => $this->string(),
