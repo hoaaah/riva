@@ -55,6 +55,19 @@ class TaAnalisisTl extends \yii\db\ActiveRecord
         ];
     }
 
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+        
+        $rencanaTindak = TaRencanaTindak::findOne(['id' => $this->rencana_tindak_id]);
+        $bobotClass = RefBobotSubUnsur::findOne(['sub_unsur_id' => $rencanaTindak->sub_unsur_id]);
+        $this->bobot = $bobotClass->bobot;
+        $this->skor = $this->level_akhir * $this->bobot;
+
+        return true;
+    }
     /**
      * @return \yii\db\ActiveQuery
      */
