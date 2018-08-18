@@ -20,7 +20,9 @@
         "bilginnet/yii2-cropper": "dev-master",
         "lesha724/yii2-document-viewer": "^0.0.4",
         "bizley/quill": "^2.0",
-        "bizley/migration": "~3.0.0"
+        "bizley/migration": "~3.0.0",
+        "nullref/yii2-datatables": "^1.0",
+        "dmstr/yii2-adminlte-asset": "2.4.4"
     },
     "require-dev": {
         "codeception/codeception": "*",

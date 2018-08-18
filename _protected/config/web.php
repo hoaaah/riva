@@ -35,6 +35,11 @@ $config = [
                 'pathMap' => ['@app/views' => '@webroot/themes/light/views'],
                 'baseUrl' => '@web/themes/light',
             ],
+            // theme for admin LTE
+            // 'theme' => [
+            //     'pathMap' => ['@app/views' => '@webroot/themes/adm/views'],
+            //     'baseUrl' => '@web/themes/adm',
+            // ],  
         ],
         'assetManager' => [
             'bundles' => [
@@ -44,6 +49,30 @@ $config = [
                 ],
             ],
         ],
+        
+        // 'assetManager' => [
+        //     'bundles' => [
+        //         // we will use bootstrap css from our theme
+        //         // 'yii\bootstrap\BootstrapAsset' => [
+        //         //     'css' => [], // do not use yii default one
+        //         // ],
+        //         /* Part ini adalah untuk mengganti skin admin-LTE. Ganti sesuai yang tersedia @hoaaah
+        //         "skin-blue",
+        //         "skin-black",
+        //         "skin-red",
+        //         "skin-yellow",
+        //         "skin-purple",
+        //         "skin-green",
+        //         "skin-blue-light",
+        //         "skin-black-light",
+        //         "skin-red-light",
+        //         "skin-yellow-light",
+        //         "skin-purple-light",
+        //         "skin-green-light"
+        //         */
+        //         'dmstr\web\AdminLteAsset' => ['skin' => 'skin-purple',],                
+        //     ],
+        // ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
