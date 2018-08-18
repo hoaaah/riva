@@ -15,6 +15,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use Yii;
+use yii\data\SqlDataProvider;
 
 /**
  * Site controller.
@@ -86,7 +87,98 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $skorSpip = Yii::$app->db->createCommand("
+            SELECT
+            SUM(
+            CASE
+                WHEN ISNULL(a.skor_akhir) THEN a.skor_awal
+                ELSE a.skor_akhir
+            END
+            ) AS skor
+            FROM
+            (
+                SELECT b.kd_sub_unsur, b.name, a.bobot, IFNULL(c.level_awal, 0) AS level_awal, IFNULL(a.bobot * c.level_awal, 0) AS skor_awal,
+                (a.bobot * d.level_akhir) AS skor_akhir
+                FROM
+                ref_bobot_sub_unsur AS a
+                INNER JOIN ref_sub_unsur AS b ON a.sub_unsur_id = b.id
+                LEFT JOIN ta_rencana_tindak AS c ON c.sub_unsur_id = b.id
+                LEFT JOIN ta_analisis_tl d ON c.id = d.rencana_tindak_id
+                WHERE c.tahun = :tahun
+            )a
+        ")->bindValues([
+            ':tahun' => isset($tahun) ? $tahun : date('Y')
+        ])->queryScalar();
+
+        $unsurLevel3Check = Yii::$app->db->createCommand("
+            SELECT kd_unsur, COUNT(kd_unsur) AS underlevel3
+            FROM
+            (
+                SELECT b.kd_unsur, b.kd_sub_unsur, b.name, a.bobot,
+                CASE
+                    WHEN d.level_akhir IS NULL THEN IFNULL(c.level_awal, 0)
+                    ELSE d.level_akhir
+                END AS level
+                FROM
+                ref_bobot_sub_unsur AS a
+                INNER JOIN ref_sub_unsur AS b ON a.sub_unsur_id = b.id
+                LEFT JOIN ta_rencana_tindak AS c ON c.sub_unsur_id = b.id
+                LEFT JOIN ta_analisis_tl d ON c.id = d.rencana_tindak_id
+                WHERE (c.tahun = 2018 OR c.tahun IS NULL)
+            )a WHERE a.level < 3
+            GROUP BY kd_unsur
+        ")->bindValues([
+            ':tahun' => isset($tahun) ? $tahun : date('Y')
+        ])->queryAll();
+        
+        $unsurLevel3Check = \yii\helpers\ArrayHelper::map($unsurLevel3Check, 'kd_unsur', 'underlevel3');
+
+        return $this->render('index', [
+            'skorSpip' => $skorSpip,
+            'unsurLevel3Check' => $unsurLevel3Check
+        ]);
+    }
+
+    public function actionDetail($id)
+    {
+        $totalCount = Yii::$app->db->createCommand("
+            SELECT COUNT(b.kd_unsur)
+            FROM
+            ref_bobot_sub_unsur AS a
+            INNER JOIN ref_sub_unsur AS b ON a.sub_unsur_id = b.id
+            LEFT JOIN ta_rencana_tindak AS c ON c.sub_unsur_id = b.id
+            LEFT JOIN ta_analisis_tl d ON c.id = d.rencana_tindak_id
+            WHERE b.kd_unsur = :kd_unsur AND (c.tahun = :tahun OR c.tahun IS NULL)     
+        ", [
+            ':kd_unsur' => $id,
+            ':tahun' => isset($tahun) ? $tahun : date('Y')
+        ])->queryScalar();
+
+        $dataProvider = new SqlDataProvider([
+            'sql' => "
+                SELECT b.kd_unsur, b.kd_sub_unsur, b.name, a.bobot,
+                CASE
+                    WHEN d.level_akhir IS NULL THEN IFNULL(c.level_awal, 0)
+                    ELSE d.level_akhir
+                END AS level
+                FROM
+                ref_bobot_sub_unsur AS a
+                INNER JOIN ref_sub_unsur AS b ON a.sub_unsur_id = b.id
+                LEFT JOIN ta_rencana_tindak AS c ON c.sub_unsur_id = b.id
+                LEFT JOIN ta_analisis_tl d ON c.id = d.rencana_tindak_id
+                WHERE b.kd_unsur = :kd_unsur AND (c.tahun = :tahun OR c.tahun IS NULL)            
+            ",
+            'params' => [
+                ':kd_unsur' => $id,
+                ':tahun' => isset($tahun) ? $tahun : date('Y')
+            ],
+            'totalCount' => $totalCount,
+            'pagination' => [
+                'pageSize' => 0,
+            ],
+        ]);
+
+        return $this->renderAjax('detail', ['dataProvider' => $dataProvider]);
     }
 
     /**
