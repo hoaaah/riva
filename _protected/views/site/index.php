@@ -69,23 +69,38 @@ $this->title = Yii::t('app', Yii::$app->name);
 
     <div class="col-md-3">
 
-        <!-- Widget: user widget style 1 -->
-        <div class="box box-widget widget-user-2">
-            <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header bg-aqua-active">
-                <div class="widget-user-image">
-                    <img class="img-circle" src="<?= isset($pemda['saved_image']) ? $pemda->getImageUrl() : Url::to('@web/uploads/no_logo.gif', false) ?>" alt="User Avatar">
-                </div>
-                <!-- /.widget-user-image -->
-                <h3 class="widget-user-username"><?= "Nama Pemda" ?></h3>
-                <h5 class="widget-user-desc"><?= "ket lainnya" ?></h5>
-            </div>
-            <div class="box-footer no-padding">
-                asdasdasd
-            </div>
-        </div>
-        <!-- /.widget-user -->
-
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th>Level</th>
+                        <th>Definisi</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>Belum ada infrastruktur SPIP</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mulai menyadari pentingnya pengendalian intrn</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Mulai melaksanakan praktik pengendalian itern namun belum terdokumentasi</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Praktik pengendalian intern mulai terdokumentasi, namun belum ada kegiatan evaluasi secara berkala terhadap praktik pengendalian intern</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Pelaksanaan pengendalian intern sudah baik dan efektif, namun evaluasi formal dan pemantauan atas praktik pengendalian itern belum berbasis aplikasi</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Pelaksanaan pengendalian intern sudah baik dan efektif, kegiatan evaluasi formal dan pemantauan atas praktik pengendalian itern sudah berbasis aplikasi</td>
+                    </tr>
+                </tbody>
+            </table>
     </div>
 
 </div>
@@ -118,7 +133,7 @@ $this->registerCss(<<<CSS
   -webkit-border-radius: 50%;
   text-align: center;
   color: white;
-  font-size: 8px;
+  font-size: 14px;
   /* text-transform: uppercase; */
   /* font-weight: 700; */
   margin: 0 auto 40px;
