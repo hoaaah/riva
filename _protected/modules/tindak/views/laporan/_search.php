@@ -20,7 +20,7 @@ use kartik\widgets\DatePicker;
 <div class="panel panel-primary">
     <div class="panel-body">
         <div class="row col-md-12">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <?php
 
                     // $model->kd_laporan = isset(Yii::$app->request->queryParams['Laporan']['kd_laporan']) ? Yii::$app->request->queryParams['Laporan']['kd_laporan'] : '';
