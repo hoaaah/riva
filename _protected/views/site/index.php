@@ -16,7 +16,7 @@ $this->title = Yii::t('app', Yii::$app->name);
 
         <p><a class="btn btn-lg btn-success" href="http://www.freetuts.org/tutorial/view?id=6">Read our tutorial</a></p>
     </div> -->
-    <div class="well col-md-9">
+    <div class="well col-md-9 col-xs-9">
         <div class="row">
             <div class="col-md-3 col-md-offset-3">
                 <?php 
@@ -67,40 +67,57 @@ $this->title = Yii::t('app', Yii::$app->name);
         <div class="col-md-3 circle green">Green</div>
         <div class="col-md-3 circle red">Red</div> -->
 
-    <div class="col-md-3">
+    <div class="col-md-3 col-xs-3">
 
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <th>Level</th>
-                        <th>Definisi</th>
-                    </tr>
-                    <tr>
-                        <td>0</td>
-                        <td>Belum ada infrastruktur SPIP</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Mulai menyadari pentingnya pengendalian intrn</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Mulai melaksanakan praktik pengendalian itern namun belum terdokumentasi</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Praktik pengendalian intern mulai terdokumentasi, namun belum ada kegiatan evaluasi secara berkala terhadap praktik pengendalian intern</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Pelaksanaan pengendalian intern sudah baik dan efektif, namun evaluasi formal dan pemantauan atas praktik pengendalian itern belum berbasis aplikasi</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Pelaksanaan pengendalian intern sudah baik dan efektif, kegiatan evaluasi formal dan pemantauan atas praktik pengendalian itern sudah berbasis aplikasi</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Informasi Level Maturitas SPIP
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Level</th>
+                                    <th>Definisi</th>
+                                </tr>
+                                <tr>
+                                    <td>0</td>
+                                    <td>Belum ada infrastruktur SPIP</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Mulai menyadari pentingnya pengendalian intrn</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Mulai melaksanakan praktik pengendalian itern namun belum terdokumentasi</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Praktik pengendalian intern mulai terdokumentasi, namun belum ada kegiatan evaluasi secara berkala terhadap praktik pengendalian intern</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Pelaksanaan pengendalian intern sudah baik dan efektif, namun evaluasi formal dan pemantauan atas praktik pengendalian itern belum berbasis aplikasi</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Pelaksanaan pengendalian intern sudah baik dan efektif, kegiatan evaluasi formal dan pemantauan atas praktik pengendalian itern sudah berbasis aplikasi</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            
     </div>
 
 </div>
