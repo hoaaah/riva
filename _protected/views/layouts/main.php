@@ -50,6 +50,7 @@ AppAsset::register($this);
             ['label' => "Tindak Lanjut", 'url' => ['/tindak/tl']],
             ['label' => "Analisis TL", 'url' => ['/tindak/analisis']],
         ]];
+        $menuItems[] = ['label' => 'Laporan', 'url' => ['/tindak/laporan']];
     }
 
     // we do not need to display About and Contact pages to employee+ roles
