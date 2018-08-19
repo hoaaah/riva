@@ -28,7 +28,7 @@ $this->title = Yii::t('app', Yii::$app->name);
                 // ]); 
                 ?>
                 <a href="<?= Url::to(['detail', 'id' => 1]) ?>" data-toggle="modal" data-target="#myModal" data-title="Lingkungan Pengendalian">
-                    <div class="circle <?= $unsurLevel3Check[1] > 0 ? "red" : "green"  ?>">Lingkungan Pengendalian</div>
+                    <div class="circle <?= isset($unsurLevel3Check[1]) && $unsurLevel3Check[1] > 0 ? "red" : "green"  ?>">Lingkungan Pengendalian</div>
                 </a>
             </div>
         </div>
@@ -36,7 +36,7 @@ $this->title = Yii::t('app', Yii::$app->name);
         <div class="row">
             <div class="col-md-3">
                 <a href="<?= Url::to(['detail', 'id' => 5]) ?>" data-toggle="modal" data-target="#myModal" data-title="Pemantauan">
-                    <div class="circle <?= $unsurLevel3Check[5] > 0 ? "red" : "green"  ?>">Pemantauan</div>
+                    <div class="circle <?= isset($unsurLevel3Check[5]) && $unsurLevel3Check[5] > 0 ? "red" : "green"  ?>">Pemantauan</div>
                 </a>
             </div>
             <div class="col-md-3">
@@ -44,7 +44,7 @@ $this->title = Yii::t('app', Yii::$app->name);
             </div>
             <div class="col-md-3">
                 <a href="<?= Url::to(['detail', 'id' => 2]) ?>" data-toggle="modal" data-target="#myModal" data-title="Penilaian Risiko">
-                    <div class="circle <?= $unsurLevel3Check[2] > 0 ? "red" : "green"  ?>">Penilaian Risiko</div>
+                    <div class="circle <?= isset($unsurLevel3Check[2]) && $unsurLevel3Check[2] > 0 ? "red" : "green"  ?>">Penilaian Risiko</div>
                 </a>
             </div>
         </div>
@@ -52,12 +52,12 @@ $this->title = Yii::t('app', Yii::$app->name);
         <div class="row">
             <div class="col-md-3 col-md-offset-1">
                 <a href="<?= Url::to(['detail', 'id' => 4]) ?>" data-toggle="modal" data-target="#myModal" data-title="InfoKom">
-                    <div class="circle <?= $unsurLevel3Check[4] > 0 ? "red" : "green"  ?>">InfoKom</div>
+                    <div class="circle <?= isset($unsurLevel3Check[4]) && $unsurLevel3Check[4] > 0 ? "red" : "green"  ?>">InfoKom</div>
                 </a>
             </div>
             <div class="col-md-3 col-md-offset-1">
                 <a href="<?= Url::to(['detail', 'id' => 3]) ?>" data-toggle="modal" data-target="#myModal" data-title="Kegiatan Pengendalian">
-                    <div class="circle <?= $unsurLevel3Check[3] > 0 ? "red" : "green"  ?>">Kegiatan Pengendalian</div>
+                    <div class="circle <?= isset($unsurLevel3Check[3]) && $unsurLevel3Check[3] > 0 ? "red" : "green"  ?>">Kegiatan Pengendalian</div>
                 </a>
             </div>
         </div>
@@ -80,7 +80,7 @@ $this->title = Yii::t('app', Yii::$app->name);
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                        <table class="table table-hover">
+                        <table class="table table-border table-striped table-hover">
                             <tbody>
                                 <tr>
                                     <th>Level</th>
