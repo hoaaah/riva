@@ -99,7 +99,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; <?= Yii::t('app', Yii::$app->name) ?> <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">Dikembangkan oleh Tim APD BPKP Pwk. Banda Aceh</p>
     </div>
 </footer>
 
