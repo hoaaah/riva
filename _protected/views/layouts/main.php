@@ -54,10 +54,10 @@ AppAsset::register($this);
     }
 
     // we do not need to display About and Contact pages to employee+ roles
-    if (!Yii::$app->user->can('employee')) {
-        $menuItems[] = ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']];
-        $menuItems[] = ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']];
-    }
+    // if (!Yii::$app->user->can('employee')) {
+    //     $menuItems[] = ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']];
+    //     $menuItems[] = ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']];
+    // }
 
     // display Users to admin+ roles
     if (Yii::$app->user->can('admin')){
@@ -75,7 +75,7 @@ AppAsset::register($this);
 
     // display Signup and Login pages to guests of the site
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
+        // $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
         $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
     }
 
