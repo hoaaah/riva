@@ -135,7 +135,7 @@ $config = [
         'rules' => [
             [
                 'allow' => true,
-                'actions' => ['login', 'qr'],
+                'actions' => ['login', 'qr', 'index', 'detail'],
             ],
             [
                 'allow' => true,
