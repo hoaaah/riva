@@ -5,6 +5,8 @@ namespace app\modules\tindak\controllers;
 use Yii;
 use app\models\RefSubUnsur;
 use app\models\TaRencanaTindak;
+use app\models\TaTindakLanjut;
+use app\models\TaAnalisisTl;
 use app\modules\tindak\models\RefSubUnsurSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -163,6 +165,35 @@ class RencanaController extends Controller
             }
         }
     }
+
+    public function actionDelete($id)
+    {
+        $request = Yii::$app->request;
+
+        $model = TaRencanaTindak::findOne($id);
+        $tl = TaTindakLanjut::findOne(['rencana_tindak_id' => $id]);
+        $analisisTl = TaAnalisisTl::findOne(['rencana_tindak_id' => $id]);
+        
+        if($tl || $analisisTl){
+            Yii::$app->getSession()->addFlash('warning', 'Sudah ada TL dalam rencana tindak ini, tidak dapat dihapus!');
+            return $this->redirect(['index']);
+        }
+        
+        $model->delete();
+
+        if($request->isAjax){
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ['forceClose'=>true,'forceReload'=>'#crud-datatable-pjax'];
+        }else{
+            /*
+            *   Process for non-ajax request
+            */
+            return $this->redirect(['index']);
+        }
+    }    
 
     /**
      * Finds the RefSubUnsur model based on its primary key value.
