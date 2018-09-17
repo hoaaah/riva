@@ -340,47 +340,47 @@ class SiteController extends Controller
      *
      * @return string|\yii\web\Response
      */
-    public function actionSignup()
-    {  
-        // get setting value for 'Registration Needs Activation'
-        $rna = Yii::$app->params['rna'];
+    // public function actionSignup()
+    // {  
+    //     // get setting value for 'Registration Needs Activation'
+    //     $rna = Yii::$app->params['rna'];
 
-        // if 'rna' value is 'true', we instantiate SignupForm in 'rna' scenario
-        $model = $rna ? new SignupForm(['scenario' => 'rna']) : new SignupForm();
+    //     // if 'rna' value is 'true', we instantiate SignupForm in 'rna' scenario
+    //     $model = $rna ? new SignupForm(['scenario' => 'rna']) : new SignupForm();
 
-        // if validation didn't pass, reload the form to show errors
-        if (!$model->load(Yii::$app->request->post()) || !$model->validate()) {
-            return $this->render('signup', ['model' => $model]);  
-        }
+    //     // if validation didn't pass, reload the form to show errors
+    //     if (!$model->load(Yii::$app->request->post()) || !$model->validate()) {
+    //         return $this->render('signup', ['model' => $model]);  
+    //     }
 
-        // try to save user data in database, if successful, the user object will be returned
-        $user = $model->signup();
+    //     // try to save user data in database, if successful, the user object will be returned
+    //     $user = $model->signup();
 
-        if (!$user) {
-            // display error message to user
-            Yii::$app->session->setFlash('error', Yii::t('app', 'We couldn\'t sign you up, please contact us.'));
-            return $this->refresh();
-        }
+    //     if (!$user) {
+    //         // display error message to user
+    //         Yii::$app->session->setFlash('error', Yii::t('app', 'We couldn\'t sign you up, please contact us.'));
+    //         return $this->refresh();
+    //     }
 
-        // user is saved but activation is needed, use signupWithActivation()
-        if ($user->status === User::STATUS_INACTIVE) {
-            $this->signupWithActivation($model, $user);
-            return $this->refresh();
-        }
+    //     // user is saved but activation is needed, use signupWithActivation()
+    //     if ($user->status === User::STATUS_INACTIVE) {
+    //         $this->signupWithActivation($model, $user);
+    //         return $this->refresh();
+    //     }
 
-        // now we will try to log user in
-        // if login fails we will display error message, else just redirect to home page
+    //     // now we will try to log user in
+    //     // if login fails we will display error message, else just redirect to home page
     
-        if (!Yii::$app->user->login($user)) {
-            // display error message to user
-            Yii::$app->session->setFlash('warning', Yii::t('app', 'Please try to log in.'));
+    //     if (!Yii::$app->user->login($user)) {
+    //         // display error message to user
+    //         Yii::$app->session->setFlash('warning', Yii::t('app', 'Please try to log in.'));
 
-            // log this error, so we can debug possible problem easier.
-            Yii::error('Login after sign up failed! User '.Html::encode($user->username).' could not log in.');
-        }
+    //         // log this error, so we can debug possible problem easier.
+    //         Yii::error('Login after sign up failed! User '.Html::encode($user->username).' could not log in.');
+    //     }
                       
-        return $this->goHome();
-    }
+    //     return $this->goHome();
+    // }
 
     /**
      * Tries to send account activation email.
@@ -388,24 +388,24 @@ class SiteController extends Controller
      * @param $model
      * @param $user
      */
-    private function signupWithActivation($model, $user)
-    {
-        // sending email has failed
-        if (!$model->sendAccountActivationEmail($user)) {
-            // display error message to user
-            Yii::$app->session->setFlash('error', Yii::t('app', 
-                'We couldn\'t send you account activation email, please contact us.'));
+    // private function signupWithActivation($model, $user)
+    // {
+    //     // sending email has failed
+    //     if (!$model->sendAccountActivationEmail($user)) {
+    //         // display error message to user
+    //         Yii::$app->session->setFlash('error', Yii::t('app', 
+    //             'We couldn\'t send you account activation email, please contact us.'));
 
-            // log this error, so we can debug possible problem easier.
-            Yii::error('Signup failed! User '.Html::encode($user->username).' could not sign up. 
-                Possible causes: verification email could not be sent.');
-        }
+    //         // log this error, so we can debug possible problem easier.
+    //         Yii::error('Signup failed! User '.Html::encode($user->username).' could not sign up. 
+    //             Possible causes: verification email could not be sent.');
+    //     }
 
-        // everything is OK
-        Yii::$app->session->setFlash('success', Yii::t('app', 'Hello').' '.Html::encode($user->username). '. ' .
-            Yii::t('app', 'To be able to log in, you need to confirm your registration. 
-                Please check your email, we have sent you a message.'));
-    }
+    //     // everything is OK
+    //     Yii::$app->session->setFlash('success', Yii::t('app', 'Hello').' '.Html::encode($user->username). '. ' .
+    //         Yii::t('app', 'To be able to log in, you need to confirm your registration. 
+    //             Please check your email, we have sent you a message.'));
+    // }
 
 /*--------------------*
  * ACCOUNT ACTIVATION *
