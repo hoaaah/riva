@@ -18,6 +18,30 @@ class UserController extends AppController
      */
     protected $_pageSize = 11;
 
+    public function beforeAction($action)
+    {
+        // your custom code here, if you want the code to run before action filters,
+        // which are triggered on the [[EVENT_BEFORE_ACTION]] event, e.g. PageCache or AccessControl
+
+        $kdUser = [
+            User::KD_USER_ADMINISTRATOR
+        ];
+
+        if(!(\yii\helpers\ArrayHelper::isIn(Yii::$app->user->identity->kd_user, $kdUser))) {
+            Yii::$app->getSession()->addFlash('warning', 'Anda tidak memiliki hak akses!');
+            $this->redirect(['/site']);
+            return false;
+        }
+
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
+
+        // other custom code here
+
+        return true; // or false to not run the action
+    }
+
     /**
      * Lists all User models.
      *

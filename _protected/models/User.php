@@ -156,6 +156,12 @@ class User extends UserIdentity
         return $this->hasOne(Role::className(), ['user_id' => 'id']);
     }
 
+    public function getKategoriUser()
+    {
+        $kdUser = $this->kdUserList;
+        return $kdUser[$this->kd_user];
+    }    
+
 //------------------------------------------------------------------------------------------------//
 // USER FINDERS
 //------------------------------------------------------------------------------------------------//

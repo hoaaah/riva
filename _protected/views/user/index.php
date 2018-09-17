@@ -38,16 +38,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     return ['class'=>CssHelper::userStatusCss($model->status)];
                 }
             ],
-            // role
+            // kd_user
             [
-                'attribute'=>'item_name',
-                'filter' => $searchModel->rolesList,
+                'attribute'=>'kd_user',
+                'filter' => $searchModel->kdUserList,
                 'value' => function ($data) {
-                    return $data->roleName;
+                    return $data->kategoriUser;
                 },
-                'contentOptions'=>function($model, $key, $index, $column) {
-                    return ['class'=>CssHelper::roleCss($model->roleName)];
-                }
+                // 'contentOptions'=>function($model, $key, $index, $column) {
+                //     return ['class'=>CssHelper::roleCss($model->roleName)];
+                // }
             ],
             // buttons
             ['class' => 'yii\grid\ActionColumn',

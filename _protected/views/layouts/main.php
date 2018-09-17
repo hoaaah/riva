@@ -8,7 +8,9 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use app\models\User;
 
+$kdUser = Yii::$app->user->identity->kd_user;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -44,13 +46,13 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Parameter', 'items' => [
             ['label' => "Data Umum", 'url' => ['/parameter/pemda']],
             ['label' => "Bobot Sub Unsur", 'url' => ['/parameter/bobot']],
-        ]];
+        ], 'visible' => $kdUser == USER::KD_USER_ADMINISTRATOR ];
         $menuItems[] = ['label' => 'Tindakan', 'items' => [
-            ['label' => "Rencan Tindak", 'url' => ['/tindak/rencana']],
-            ['label' => "Tindak Lanjut", 'url' => ['/tindak/tl']],
-            ['label' => "Analisis TL", 'url' => ['/tindak/analisis']],
+            ['label' => "Rencan Tindak", 'url' => ['/tindak/rencana'], 'visible' => $kdUser <= USER::KD_USER_BPKP],
+            ['label' => "Tindak Lanjut", 'url' => ['/tindak/tl'], 'visible' => $kdUser <= USER::KD_USER_INSPEKTORAT],
+            ['label' => "Analisis TL", 'url' => ['/tindak/analisis'], 'visible' => $kdUser <= USER::KD_USER_BPKP],
         ]];
-        $menuItems[] = ['label' => 'Laporan', 'url' => ['/tindak/laporan']];
+        $menuItems[] = ['label' => 'Laporan', 'url' => ['/tindak/laporan'], 'visible' => $kdUser <= USER::KD_USER_INSPEKTORAT];
     }
 
     // we do not need to display About and Contact pages to employee+ roles
