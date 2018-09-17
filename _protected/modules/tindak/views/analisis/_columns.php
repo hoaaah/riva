@@ -77,16 +77,16 @@ return [
                         'role'=>'modal-remote',
                         'data-toggle'=>'tooltip'
                     ]);
-                    $return .= Html::a('<i class="glyphicon glyphicon-remove"></i> ', ['delete', 'id' => $value->id ], [
-                        // 'class' =>  'label label-danger',
-                        'title' => "Hapus Dokumen",
-                        'role'=>'modal-remote',
-                        'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
-                        'data-request-method'=>'post',
-                        'data-toggle'=>'tooltip',
-                        'data-confirm-title'=>'Are you sure?',
-                        'data-confirm-message'=>'Anda akan menghapus dokumen ini, data yang sudah dihapus tidak dapat dikembalikan lagi.'
-                    ]);
+                    // $return .= Html::a('<i class="glyphicon glyphicon-remove"></i> ', ['delete', 'id' => $value->id ], [
+                    //     // 'class' =>  'label label-danger',
+                    //     'title' => "Hapus Dokumen",
+                    //     'role'=>'modal-remote',
+                    //     'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                    //     'data-request-method'=>'post',
+                    //     'data-toggle'=>'tooltip',
+                    //     'data-confirm-title'=>'Are you sure?',
+                    //     'data-confirm-message'=>'Anda akan menghapus dokumen ini, data yang sudah dihapus tidak dapat dikembalikan lagi.'
+                    // ]);
                     $return .= "</br>";
                 }
             }
