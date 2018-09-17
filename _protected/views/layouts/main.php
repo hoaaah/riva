@@ -10,7 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\models\User;
 
-$kdUser = Yii::$app->user->identity->kd_user;
+$kdUser = Yii::$app->user->identity->kd_user ?? null;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
