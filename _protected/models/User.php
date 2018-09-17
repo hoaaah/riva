@@ -18,7 +18,12 @@ class User extends UserIdentity
     // the list of status values that can be stored in user table
     const STATUS_ACTIVE   = 10;
     const STATUS_INACTIVE = 1;
-    const STATUS_DELETED  = 0;   
+    const STATUS_DELETED  = 0;
+
+    // the list of kd_user
+    const KD_USER_ADMINISTRATOR = 1;
+    const KD_USER_BPKP = 2;
+    const KD_USER_INSPEKTORAT = 3;
 
     /**
      * List of names for each status.
@@ -28,6 +33,16 @@ class User extends UserIdentity
         self::STATUS_ACTIVE   => 'Active',
         self::STATUS_INACTIVE => 'Inactive',
         self::STATUS_DELETED  => 'Deleted'
+    ];
+
+    /**
+     * List of names for each status.
+     * @var array
+     */
+    public $kdUserList = [
+        self::KD_USER_ADMINISTRATOR   => 'Administrator (Korwas)',
+        self::KD_USER_BPKP => 'Tim BPKP',
+        self::KD_USER_INSPEKTORAT  => 'Inspektorat Pemda'
     ];
 
     /**
@@ -72,6 +87,7 @@ class User extends UserIdentity
             $this->passwordStrengthRule(),
 
             ['status', 'required'],
+            ['kd_user', 'required'],
             ['item_name', 'string', 'min' => 3, 'max' => 64]
         ];
     }
@@ -122,9 +138,10 @@ class User extends UserIdentity
             'password' => Yii::t('app', 'Password'),
             'email' => Yii::t('app', 'Email'),
             'status' => Yii::t('app', 'Status'),
+            'kd_user' => Yii::t('app', 'Kategori User'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
-            'item_name' => Yii::t('app', 'Role'),
+            'item_name' => Yii::t('app', 'Role dalam Aplikasi'),
         ];
     }
 

@@ -40,6 +40,10 @@ use yii\widgets\ActiveForm;
         <?= $form->field($user, 'item_name')->dropDownList($roles) ?>
 
     </div>
+    <div class="col-md-6">
+
+        <?= $form->field($user, 'kd_user')->dropDownList($user->kdUserList) ?>
+    </div>    
     </div>
 
     <div class="form-group">     
