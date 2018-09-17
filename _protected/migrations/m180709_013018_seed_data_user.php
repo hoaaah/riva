@@ -21,7 +21,8 @@ class m180709_013018_seed_data_user extends Migration
             'auth_key' => Yii::$app->getSecurity()->generateRandomString(),
             'status' => User::STATUS_ACTIVE,
             'created_at' => time(),
-            'updated_at' => time()
+            'updated_at' => time(),
+            'kd_user' => 1
         ]);
 
     }

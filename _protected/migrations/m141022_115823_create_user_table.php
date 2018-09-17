@@ -22,6 +22,7 @@ class m141022_115823_create_user_table extends Migration
             'account_activation_token' => $this->string()->unique(),          
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
+            'kd_user' => $this->smallInteger()->notNull(),
         ], $tableOptions);
     }
 
