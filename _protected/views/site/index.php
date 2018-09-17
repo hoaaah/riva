@@ -40,7 +40,7 @@ $this->title = Yii::t('app', Yii::$app->name);
                 </a>
             </div>
             <div class="col-md-3">
-                <div class="circle-large <?= $skorSpip > 2 ? "green" : "blue"  ?>">SPIP Level <?= floor($skorSpip) ?></div>
+                <div class="circle-large <?= $skorSpip > 2 ? "red" : "blue"  ?>">SPIP Level <?= floor($skorSpip) ?></div>
             </div>
             <div class="col-md-3">
                 <a href="<?= Url::to(['detail', 'id' => 2]) ?>" data-toggle="modal" data-target="#myModal" data-title="Penilaian Risiko">
