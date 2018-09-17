@@ -182,7 +182,7 @@ class AnalisisController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         return [
             'title'=> "Rencana Tindak Sub Unsur #$id $model->name",
-            'content'=>$this->renderAjax('Preview', [
+            'content'=>$this->renderAjax('preview', [
                 'model' => $model,
                 'tindakLanjut' => $tindakLanjut,
                 'rencanaTindak' => $rencanaTindak,
