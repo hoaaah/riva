@@ -48,7 +48,7 @@ AppAsset::register($this);
             ['label' => "Bobot Sub Unsur", 'url' => ['/parameter/bobot']],
         ], 'visible' => $kdUser == USER::KD_USER_ADMINISTRATOR ];
         $menuItems[] = ['label' => 'Tindakan', 'items' => [
-            ['label' => "Rencan Tindak", 'url' => ['/tindak/rencana'], 'visible' => $kdUser <= USER::KD_USER_BPKP],
+            ['label' => "Rencan Tindak", 'url' => ['/tindak/rencana'], 'visible' => $kdUser <= USER::KD_USER_INSPEKTORAT],
             ['label' => "Tindak Lanjut", 'url' => ['/tindak/tl'], 'visible' => $kdUser <= USER::KD_USER_INSPEKTORAT],
             ['label' => "Analisis TL", 'url' => ['/tindak/analisis'], 'visible' => $kdUser <= USER::KD_USER_BPKP],
         ]];
