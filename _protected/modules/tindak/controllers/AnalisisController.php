@@ -196,8 +196,10 @@ class AnalisisController extends Controller
     {
         $request = Yii::$app->request;
 
-        $model = TaTindakLanjut::findOne($id);
-        $model->deleteFile();
+        $rencanaTindak = $this->findRencanaTindak($id);
+        $model = TaAnalisisTl::findOne([
+            'rencana_tindak_id' => $rencanaTindak->id
+        ]);
         
         $model->delete();
 

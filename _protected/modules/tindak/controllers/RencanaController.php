@@ -170,9 +170,9 @@ class RencanaController extends Controller
     {
         $request = Yii::$app->request;
 
-        $model = TaRencanaTindak::findOne($id);
-        $tl = TaTindakLanjut::findOne(['rencana_tindak_id' => $id]);
-        $analisisTl = TaAnalisisTl::findOne(['rencana_tindak_id' => $id]);
+        $model = $this->findRencanaTindak($id);
+        $tl = TaTindakLanjut::findOne(['rencana_tindak_id' => $model->id]);
+        $analisisTl = TaAnalisisTl::findOne(['rencana_tindak_id' => $model->id]);
         
         if($tl || $analisisTl){
             Yii::$app->getSession()->addFlash('warning', 'Sudah ada TL dalam rencana tindak ini, tidak dapat dihapus!');
