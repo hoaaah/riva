@@ -3,7 +3,8 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use kartik\grid\GridView;
-use johnitvn\ajaxcrud\CrudAsset; 
+use johnitvn\ajaxcrud\CrudAsset;
+use bizley\quill\QuillAsset;
 use johnitvn\ajaxcrud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
@@ -15,7 +16,7 @@ $this->params['breadcrumbs'][] = 'Tindakan';
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
-
+QuillAsset::register($this);
 ?>
 <div class="ref-sub-unsur-index">
     <div id="ajaxCrudDatatable">

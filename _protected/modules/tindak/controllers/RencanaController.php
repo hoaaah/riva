@@ -13,6 +13,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
+use app\models\User;
 
 /**
  * RencanaController implements the CRUD actions for RefSubUnsur model.
@@ -41,8 +42,9 @@ class RencanaController extends Controller
         // which are triggered on the [[EVENT_BEFORE_ACTION]] event, e.g. PageCache or AccessControl
 
         $kdUser = [
-            \app\models\User::KD_USER_ADMINISTRATOR,
-            \app\models\User::KD_USER_BPKP
+            User::KD_USER_ADMINISTRATOR,
+            User::KD_USER_BPKP,
+            User::KD_USER_INSPEKTORAT
         ];
 
         if(!(\yii\helpers\ArrayHelper::isIn(Yii::$app->user->identity->kd_user, $kdUser))) {
@@ -108,6 +110,17 @@ class RencanaController extends Controller
         $model = $this->findModel($id);
         
         $rencanaTindak = $this->findRencanaTindak($id);
+
+        $view = '_form';
+        if(Yii::$app->user->identity->kd_user == User::KD_USER_INSPEKTORAT)
+        {
+            $view = '_form-inspektorat';
+            if(!$rencanaTindak) {
+                Yii::$app->getSession()->setFlash('warning',  'Rencana Tindak Belum diisi, anda tidak diberi akses untuk dapat menambahkan rencanan tindak');
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+        }
+
         if(!$rencanaTindak) $rencanaTindak = new TaRencanaTindak;
         $rencanaTindak->tahun = 2018;
         $rencanaTindak->sub_unsur_id = $id;
@@ -117,7 +130,7 @@ class RencanaController extends Controller
             if($request->isGet){
                 return [
                     'title'=> "Rencana Tindak Sub Unsur #$id $model->name",
-                    'content'=>$this->renderAjax('update', [
+                    'content'=>$this->renderAjax($view, [
                         'model' => $model,
                         'rencanaTindak' => $rencanaTindak,
                     ]),
@@ -140,7 +153,7 @@ class RencanaController extends Controller
             }else{
                  return [
                     'title'=> "Rencana Tindak Sub Unsur #$id $model->name",
-                    'content'=>$this->renderAjax('update', [
+                    'content'=>$this->renderAjax($view, [
                         'model' => $model,
                         'rencanaTindak' => $rencanaTindak,
                     ]),
@@ -158,7 +171,7 @@ class RencanaController extends Controller
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
             } else {
-                return $this->render('update', [
+                return $this->render($view, [
                     'model' => $model,
                     'rencanaTindak' => $rencanaTindak,
                 ]);

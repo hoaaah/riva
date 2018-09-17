@@ -66,6 +66,12 @@ return [
         'urlCreator' => function($action, $model, $key, $index) { 
                 return Url::to([$action,'id'=>$key]);
         },
+        'visibleButtons' => [
+            'delete' => function($model){
+                if(\app\models\User::KD_USER_INSPEKTORAT == Yii::$app->user->identity->kd_user) return false;
+                return true;
+            }
+        ],
         'viewOptions'=>['role'=>'modal-remote','title'=>'View','data-toggle'=>'tooltip'],
         'updateOptions'=>['role'=>'modal-remote','title'=>'Update', 'data-toggle'=>'tooltip'],
         'deleteOptions'=>['role'=>'modal-remote','title'=>'Delete', 
